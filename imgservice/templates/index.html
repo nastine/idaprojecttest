@@ -1,0 +1,23 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<a href="{% url 'home' %}">Назад к списку</a>
+<h1>Новое изображение</h1>
+
+    <form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+   {{ form.as_p }}
+  <button type="submit">Отправить</button>
+</form>
+
+{% if img_obj %}
+
+  <h3>Succesfully uploaded : {{ci}}</h3>
+
+  <img src="{{ img_obj.image.url}}" alt="connect">
+{% endif %}
+
+{% endblock %}
+

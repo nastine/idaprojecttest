@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<h1>Список изображений</h1>
+<p></p>
+
+
+<p></p>
+{% if image_list %}
+    {% for image in image_list %}
+        {% if image.image %}
+
+
+          <a href="{% url 'image_resize' image %}">{{image.image.name}}</a><br>
+        {% endif %}
+    {% endfor %}
+{%else%}
+Нет доступных изображений
+<p></p>
+
+{% endif %}
+<p></p>
+<h4><a href="{% url 'upload' %}">Загрузить изображение</a></h4>
+
+{% endblock %}
+

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<div class="margin-left">
+    <a href="{% url 'home' %}">Назад к списку</a>
+
+    {% if resize %}
+
+  <h3>Размер изображния успешно изменен</h3>
+
+  <img src="{{ image.image.url}}" width="{{ width }}" height="{{ height }}">
+    {%else%}
+        <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+        <button type="submit">Отправить</button> <p>
+
+        <img src="{{ image.image.url }}" class="preview">
+
+</form>
+{% endif %}
+</div>
+{% endblock %}
